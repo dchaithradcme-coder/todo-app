@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List with Notifications, Priority & History</title>
+  <style>
+    body {
+background-image: url('https://img.freepik.com/premium-photo/time-management-with-clock-calendar-vector-flat-style-illustration_1029473-96137.jpg'); /* ✅ Use relative path or URL */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+
+
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    input, select, button {
+      margin: 5px 2px;
+      padding: 6px;
+      font-size: 1rem;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li.task-item {
+      border-left: 4px solid gray;
+      padding-left: 10px;
+      margin: 10px 0;
+      background: #f9f9f9;
+      border-radius: 4px;
+      position: relative;
+    }
+    li.task-item.low {
+      border-color: green;
+    }
+    li.task-item.medium {
+      border-color: orange;
+    }
+    li.task-item.high {
+      border-color: red;
+    }
+    .priority-label {
+      font-weight: bold;
+    }
+    button {
+      cursor: pointer;
+    }
+    #historyList li {
+      background: #e0e0e0;
+      margin: 5px 0;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+    small {
+      color: #555;
+    }
+    label {
+      font-size: 0.9rem;
+      margin-left: 10px;
+      user-select: none;
+    }
+  </style>
+<script defer src="/static/js/bundle.js"></script></head>
+<body>
+  <h1>📝 To-Do List with Notifications, Priority & History</h1>
+
+  <div>
+    <input type="text" id="taskInput" placeholder="Enter task" required />
+    <input type="date" id="dateInput" required />
+    <input type="number" id="hourInput" min="1" max="12" placeholder="Hour" required />
+    <input type="number" id="minuteInput" min="0" max="59" placeholder="Minute" required />
+    <select id="ampmInput">
+      <option value="AM">AM</option>
+      <option value="PM">PM</option>
+    </select>
+    <select id="repeatInput">
+      <option value="none">Repeat: None</option>
+      <option value="daily">Repeat: Daily</option>
+      <option value="weekly">Repeat: Weekly</option>
+      <option value="monthly">Repeat: Monthly</option>
+    </select>
+    <select id="priorityInput">
+      <option value="low">Priority: Low</option>
+      <option value="medium">Priority: Medium</option>
+      <option value="high">Priority: High</option>
+    </select>
+    <input type="text" id="tagsInput" placeholder="Tags (comma separated)" />
+    
+    <label>
+      <input type="checkbox" id="soundToggle" checked />
+      🔊 Enable Sound
+    </label>
+    
+    <button onclick="addTask()">Add Task</button>
+  </div>
+
+  <h2>Tasks</h2>
+  <ul id="taskList"></ul>
+
+  <h2>Task History (Deleted Tasks)</h2>
+  <ul id="historyList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
